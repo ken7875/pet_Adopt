@@ -4,7 +4,7 @@ import tw from './locales/tw.js'
 const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES'
   ? {
       router: {
-        base: '/pet_Adopt/'
+        base: 'pet_Adopt'
       }
     }
   : {}
