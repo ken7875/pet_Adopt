@@ -1,13 +1,13 @@
 import en from './locales/en.js'
 import tw from './locales/tw.js'
 
-const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES'
-  ? {
-      router: {
-        base: 'pet_Adopt'
-      }
-    }
-  : {}
+// const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES'
+//   ? {
+//       router: {
+//         base: 'pet_Adopt'
+//       }
+//     }
+//   : {}
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -90,6 +90,6 @@ export default {
   build: {
   },
   router: {
-    ...routerBase
+    base: '/pet_Adopt/'
   }
 }
