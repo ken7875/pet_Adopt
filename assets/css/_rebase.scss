@@ -1,0 +1,18 @@
+html{
+    height: 100%;
+}
+body{
+    height: 100%;
+    overflow-x: hidden;
+    line-height: 2;
+}
+.img{
+    background-position: center center;
+    background-size: cover;
+}
+img{
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    height: auto;
+}
