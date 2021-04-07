@@ -45,7 +45,7 @@ export default {
     let isError = false
     const errorMessage = '找不到此頁面'
     try {
-      const res = await axios.get(`http://localhost:3000/apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&$top=200&animal_id=${context.params.id}`)
+      const res = await axios.get(`https://nuxt-pet-adopt.herokuapp.com/apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&$top=200&animal_id=${context.params.id}`)
       // filter=animal_id=${context.params.id}
       pageDetail.data = res.data
     } catch (error) {

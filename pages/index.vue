@@ -87,7 +87,7 @@ export default {
   async asyncData () {
     let petData = []
     try {
-      const url = 'http://localhost:3000/apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&$top=18&$skip=0'
+      const url = 'https://nuxt-pet-adopt.herokuapp.com/apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&$top=18&$skip=0'
       const res = await axios.get(url)
       petData = res.data
     } catch (error) {
@@ -159,7 +159,7 @@ export default {
       try {
         if (this.isError === false) {
           const top = this.top += 18
-          const url = `http://localhost:3000/apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&$top=${top}&$skip=0`
+          const url = `https://nuxt-pet-adopt.herokuapp.com/apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&$top=${top}&$skip=0`
           const res = await axios.get(url)
           this.displayData = res.data
           console.log(url, this.displayData)
@@ -179,7 +179,7 @@ export default {
           if (this.$refs.shelter.value !== '') {
             filterString += `&shelter_name=${this.$refs.shelter.value}`
           }
-          const url = `http://localhost:3000/apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&$top=${top}&$skip=0${filterString}`
+          const url = `https://nuxt-pet-adopt.herokuapp.com/apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&$top=${top}&$skip=0${filterString}`
           const result = await axios.get(url)
           this.displayData = result.data
         }
@@ -241,7 +241,7 @@ export default {
         if (this.$refs.shelter.value !== '') {
           filterString += `&shelter_name=${this.$refs.shelter.value}`
         }
-        const url = `http://localhost:3000/apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&$top=${top}&$skip=0${filterString}`
+        const url = `https://nuxt-pet-adopt.herokuapp.com/apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&$top=${top}&$skip=0${filterString}`
         const result = await axios.get(url)
         this.displayData = result.data
       } catch (error) {
