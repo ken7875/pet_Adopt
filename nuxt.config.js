@@ -88,8 +88,8 @@ export default {
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  },
-  router: {
-    base: '/pet_Adopt/'
   }
+  // router: {
+  //   base: '/pet_Adopt/'
+  // }
 }
