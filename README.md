@@ -1,5 +1,6 @@
 # petAdopt
-
+網址連結: 
+https://nuxt-pet-adopt.herokuapp.com/
 ## Build Setup
 
 ```bash
