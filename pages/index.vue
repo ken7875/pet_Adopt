@@ -85,15 +85,16 @@ import { apiHomePageData } from '../api'
 // import { apiHomePageData } from '../api'
 
 export default {
-  async asyncData () {
+  async asyncData ({ error }) {
     let petData = []
     try {
       // const url = 'apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&$top=18&$skip=0'
       const res = await apiHomePageData()
       petData = res.data
       console.log(res)
-    } catch (error) {
-      console.log(error)
+    } catch (e) {
+      console.log('error')
+      error({ statusCode: 404, message: '找不到此頁面' })
     }
     return {
       defaultImg: `this.src="${require('../assets/img/notFound.png')}"`,
@@ -159,33 +160,13 @@ export default {
     },
     async watchMore () {
       try {
-        if (this.isError === false) {
-          this.$nuxt.$loading.start()
-          const top = this.top += 18
-          const url = `https://nuxt-pet-adopt.herokuapp.com/apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&$top=${top}&$skip=0`
-          const res = await axios.get(url)
-          this.displayData = res.data
-          this.$nuxt.$loading.finish()
-        } else if (this.isError === true) {
-          let top = 18
-          top += 18
-          if (this.$refs.kind.value === '' && this.$refs.sex.value === '' && this.$refs.shelter.value === '') {
-            return alert('請選擇其中一項')
-          }
-          let filterString = ''
-          if (this.$refs.kind.value !== '') {
-            filterString += `&animal_kind=${this.tranKind}`
-          }
-          if (this.$refs.sex.value !== '') {
-            filterString += `&animal_sex=${this.tranSex}`
-          }
-          if (this.$refs.shelter.value !== '') {
-            filterString += `&shelter_name=${this.$refs.shelter.value}`
-          }
-          const url = `https://nuxt-pet-adopt.herokuapp.com/apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&$top=${top}&$skip=0${filterString}`
-          const result = await axios.get(url)
-          this.displayData = result.data
-        }
+        this.$nuxt.$loading.start()
+        const top = this.top += 18
+        const url = `https://nuxt-pet-adopt.herokuapp.com/apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&$top=${top}&$skip=0&animal_kind=${this.tranKind}&animal_sex=${this.tranSex}&shelter_name=${this.$refs.shelter.value}`
+        console.log(url)
+        const res = await axios.get(url)
+        this.displayData = res.data
+        this.$nuxt.$loading.finish()
       } catch (error) {
         console.log(error)
         this.$nuxt.$loading.finish()
@@ -249,8 +230,10 @@ export default {
         const url = `https://nuxt-pet-adopt.herokuapp.com/apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&$top=${top}&$skip=0${filterString}`
         const result = await axios.get(url)
         this.displayData = result.data
+        this.$nuxt.$loading.finish()
       } catch (error) {
         console.log(error)
+        this.$nuxt.$loading.finish()
       }
     }
   }

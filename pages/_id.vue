@@ -40,7 +40,7 @@
 import axios from 'axios'
 
 export default {
-  async asyncData (context) {
+  async asyncData ({ context, error }) {
     const pageDetail = { data: {} }
     let isError = false
     const errorMessage = '找不到此頁面'
@@ -48,8 +48,9 @@ export default {
       const res = await axios.get(`https://nuxt-pet-adopt.herokuapp.com/apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&animal_id=${context.params.id}`)
       // filter=animal_id=${context.params.id}
       pageDetail.data = res.data
-    } catch (error) {
+    } catch (e) {
       isError = true
+      error({ statusCode: 404, message: '找不到此頁面' })
     }
     return {
       data: pageDetail.data[0],
