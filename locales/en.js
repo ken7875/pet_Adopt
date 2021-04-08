@@ -11,6 +11,7 @@ export default {
   shelter: 'shelter',
   male: 'male',
   female: 'female',
+  remark: 'remark',
   cat: 'cat',
   dog: 'dog',
   search: 'search',

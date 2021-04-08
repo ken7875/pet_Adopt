@@ -8,6 +8,7 @@ export default {
   kind: '種類',
   sex: '性別',
   from: '來源',
+  remark: '備註',
   shelter: '收容所',
   male: '公',
   female: '母',

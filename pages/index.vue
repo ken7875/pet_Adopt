@@ -81,15 +81,17 @@
 
 <script>
 import axios from 'axios'
+import { apiHomePageData } from '../api'
 // import { apiHomePageData } from '../api'
 
 export default {
   async asyncData () {
     let petData = []
     try {
-      const url = 'https://nuxt-pet-adopt.herokuapp.com/apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&$top=18&$skip=0'
-      const res = await axios.get(url)
+      // const url = 'apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&$top=18&$skip=0'
+      const res = await apiHomePageData()
       petData = res.data
+      console.log(res)
     } catch (error) {
       console.log(error)
     }
@@ -158,11 +160,12 @@ export default {
     async watchMore () {
       try {
         if (this.isError === false) {
+          this.$nuxt.$loading.start()
           const top = this.top += 18
           const url = `https://nuxt-pet-adopt.herokuapp.com/apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&$top=${top}&$skip=0`
           const res = await axios.get(url)
           this.displayData = res.data
-          console.log(url, this.displayData)
+          this.$nuxt.$loading.finish()
         } else if (this.isError === true) {
           let top = 18
           top += 18
@@ -185,6 +188,7 @@ export default {
         }
       } catch (error) {
         console.log(error)
+        this.$nuxt.$loading.finish()
       }
     },
     filterKind () {
@@ -241,6 +245,7 @@ export default {
         if (this.$refs.shelter.value !== '') {
           filterString += `&shelter_name=${this.$refs.shelter.value}`
         }
+        this.$nuxt.$loading.start()
         const url = `https://nuxt-pet-adopt.herokuapp.com/apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&$top=${top}&$skip=0${filterString}`
         const result = await axios.get(url)
         this.displayData = result.data

@@ -15,7 +15,7 @@
               {{ $t('sex') }}: {{ data.animal_sex }}
             </p>
             <p>
-              {{ $t('from') }}: {{ data.animal_remark }}
+              {{ $t('remark') }}: {{ data.animal_remark }}
             </p>
             <p>
               {{ $t('shelter') }}: {{ data.shelter_name }}
@@ -45,7 +45,7 @@ export default {
     let isError = false
     const errorMessage = '找不到此頁面'
     try {
-      const res = await axios.get(`https://nuxt-pet-adopt.herokuapp.com/apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&$top=200&animal_id=${context.params.id}`)
+      const res = await axios.get(`https://nuxt-pet-adopt.herokuapp.com/apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&animal_id=${context.params.id}`)
       // filter=animal_id=${context.params.id}
       pageDetail.data = res.data
     } catch (error) {
@@ -57,6 +57,19 @@ export default {
       errorMessage,
       defaultImg: `this.src="${require('../assets/img/notFound.png')}"`
     }
+  },
+  head: {
+    title: '寵物詳細資訊頁面',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      {
+        hid: 'description',
+        name: 'description',
+        content: '寵物詳細資訊'
+      }
+    ],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
   mounted () {
     this.translate()
