@@ -3,7 +3,7 @@
     <header>
       <b-container class="container d-flex justify-content-between align-items-center h-100">
         <h1>
-          <nuxt-link to="/">
+          <nuxt-link :to="localePath('/')">
             {{ $t('title') }}
           </nuxt-link>
         </h1>

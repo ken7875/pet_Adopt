@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-container v-if="!isError">
+    <b-container>
       <h2>{{ $t('idTitle') }}</h2>
       <div class="info">
         <b-row>
@@ -30,9 +30,6 @@
         </b-row>
       </div>
     </b-container>
-    <div v-if="isError" class="d-flex justify-content-center align-items-center">
-      <h1>{{ errorMessage }}</h1>
-    </div>
   </div>
 </template>
 
@@ -40,22 +37,17 @@
 import axios from 'axios'
 
 export default {
-  async asyncData ({ context, error }) {
+  async asyncData (context) {
     const pageDetail = { data: {} }
-    let isError = false
-    const errorMessage = '找不到此頁面'
     try {
       const res = await axios.get(`https://nuxt-pet-adopt.herokuapp.com/apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&animal_id=${context.params.id}`)
-      // filter=animal_id=${context.params.id}
       pageDetail.data = res.data
-    } catch (e) {
-      isError = true
-      error({ statusCode: 404, message: '找不到此頁面' })
+    } catch (error) {
+      console.log('error')
+      context.error({ statusCode: 404, message: '找不到此頁面' })
     }
     return {
       data: pageDetail.data[0],
-      isError,
-      errorMessage,
       defaultImg: `this.src="${require('../assets/img/notFound.png')}"`
     }
   },

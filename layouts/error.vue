@@ -1,14 +1,14 @@
 <template>
-  <div class="error container">
+  <div class="container">
     <div>
       <h1 v-if="error.statusCode === 404">
-        找不到此頁面
+        404, can't find this page
       </h1>
       <h1 v-else>
-        發生錯誤瞜
+        Sorry, something get wrong
       </h1>
-      <NuxtLink to="/">
-        回首頁
+      <NuxtLink :to="localePath(`/`)">
+        home
       </NuxtLink>
     </div>
   </div>
@@ -22,7 +22,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .error{
+  .container{
     height: 570px;
     display: flex;
     align-items: center;

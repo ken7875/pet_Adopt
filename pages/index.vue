@@ -59,10 +59,7 @@
                 <p>
                   {{ $t('shelter') }}: {{ item.animal_place }}
                 </p>
-                <nuxt-link
-                  :to="localePath(`/${item.animal_id}`)"
-                  class="button"
-                >
+                <nuxt-link :to="localePath(`/${item.animal_id}`)" class="button">
                   {{ $t('detail') }}
                 </nuxt-link>
               </div>
@@ -82,17 +79,14 @@
 <script>
 import axios from 'axios'
 import { apiHomePageData } from '../api'
-// import { apiHomePageData } from '../api'
 
 export default {
-  async asyncData ({ error }) {
+  async asyncData () {
     let petData = []
     try {
-      // const url = 'apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&$top=18&$skip=0'
       const res = await apiHomePageData()
       petData = res.data
-      console.log(res)
-    } catch (e) {
+    } catch (error) {
       console.log('error')
       error({ statusCode: 404, message: '找不到此頁面' })
     }
@@ -163,7 +157,6 @@ export default {
         this.$nuxt.$loading.start()
         const top = this.top += 18
         const url = `https://nuxt-pet-adopt.herokuapp.com/apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&$top=${top}&$skip=0&animal_kind=${this.tranKind}&animal_sex=${this.tranSex}&shelter_name=${this.$refs.shelter.value}`
-        console.log(url)
         const res = await axios.get(url)
         this.displayData = res.data
         this.$nuxt.$loading.finish()
