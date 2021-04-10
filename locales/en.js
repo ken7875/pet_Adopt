@@ -16,10 +16,20 @@ export default {
   dog: 'dog',
   search: 'search',
   detail: 'detail',
+  apply: 'apply',
   more: 'watch more',
   phone: 'phone',
   address: 'address',
   source: 'source',
   shelterPlace: 'shelter place',
-  contact: 'contact'
+  contact: 'contact',
+  // 表單
+  name: 'name',
+  id: 'ID number',
+  email: 'email',
+  correctPhone: 'correct phone number',
+  correctEmail: 'coorect email',
+  correctId: 'correct ID number',
+  correctName: 'correct name',
+  require: 'This field is require'
 }

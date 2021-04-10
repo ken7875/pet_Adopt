@@ -17,7 +17,8 @@ export default {
     link: [
       { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
       { href: 'https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap' },
-      { rel: 'stylesheet', href: 'https://pro.fontawesome.com/releases/v5.10.0/css/all.css', integrity: 'sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p', crossorigin: 'anonymous' }
+      { rel: 'stylesheet', href: 'https://pro.fontawesome.com/releases/v5.10.0/css/all.css', integrity: 'sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p', crossorigin: 'anonymous' },
+      { rel: 'icon', type: 'image/x-icon', href: '@/static/icon.png' }
     ]
   },
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -26,7 +27,8 @@ export default {
   loading: '@/components/loading',
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/axios'
+    '~/plugins/axios',
+    '@/plugins/veevalidate'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -80,5 +82,6 @@ export default {
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    transpile: ['vee-validate/dist/rules']
   }
 }

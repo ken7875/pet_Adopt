@@ -59,9 +59,14 @@
                 <p>
                   {{ $t('shelter') }}: {{ item.animal_place }}
                 </p>
-                <nuxt-link :to="localePath(`/${item.animal_id}`)" class="button">
-                  {{ $t('detail') }}
-                </nuxt-link>
+                <div class="d-flex justify-content-around align-items-center">
+                  <nuxt-link :to="localePath(`/${item.animal_id}`)" class="button">
+                    {{ $t('detail') }}
+                  </nuxt-link>
+                  <nuxt-link :to="localePath('/apply')" class="button">
+                    {{ $t('apply') }}
+                  </nuxt-link>
+                </div>
               </div>
             </div>
           </b-col>
@@ -156,7 +161,7 @@ export default {
       try {
         this.$nuxt.$loading.start()
         const top = this.top += 18
-        const url = `https://nuxt-pet-adopt.herokuapp.com/apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&$top=${top}&$skip=0&animal_kind=${this.tranKind}&animal_sex=${this.tranSex}&shelter_name=${this.$refs.shelter.value}`
+        const url = `http://localhost:3000/apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&$top=${top}&$skip=0&animal_kind=${this.tranKind}&animal_sex=${this.tranSex}&shelter_name=${this.$refs.shelter.value}`
         const res = await axios.get(url)
         this.displayData = res.data
         this.$nuxt.$loading.finish()
@@ -220,7 +225,7 @@ export default {
           filterString += `&shelter_name=${this.$refs.shelter.value}`
         }
         this.$nuxt.$loading.start()
-        const url = `https://nuxt-pet-adopt.herokuapp.com/apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&$top=${top}&$skip=0${filterString}`
+        const url = `http://localhost:3000/apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&$top=${top}&$skip=0${filterString}`
         const result = await axios.get(url)
         this.displayData = result.data
         this.$nuxt.$loading.finish()
@@ -284,7 +289,8 @@ export default {
   .card{
     margin-bottom: 40px;
     .button{
-      padding: 8px 15px 8px 15px;
+      margin-top: 20px;
+      padding: 4px 15px 4px 15px;
       color: #000000;
     }
   }

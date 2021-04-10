@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header>
+    <header class="header">
       <b-container class="container d-flex justify-content-between align-items-center h-100">
         <h1>
           <nuxt-link :to="localePath('/')">
@@ -57,9 +57,6 @@ export default {
 }
 </script>
 
-<style>
-
-</style>
 <style lang="scss">
 $primary: #F2BE58;
 *,
@@ -77,7 +74,7 @@ a{
 html, body{
   font-family: 'Dela Gothic One', cursive;
 }
-header{
+.header{
   position: fixed;
   z-index: 20;
   background: #FFFFFF;

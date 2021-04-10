@@ -29,6 +29,11 @@
           </b-col>
         </b-row>
       </div>
+      <div class="button-group w-100 d-flex justify-content-end align-items-center">
+        <nuxt-link :to="localePath('/apply')" class="button">
+          申請領養
+        </nuxt-link>
+      </div>
     </b-container>
   </div>
 </template>
@@ -40,7 +45,7 @@ export default {
   async asyncData (context) {
     const pageDetail = { data: {} }
     try {
-      const res = await axios.get(`https://nuxt-pet-adopt.herokuapp.com/apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&animal_id=${context.params.id}`)
+      const res = await axios.get(`http://localhost:3000/apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&animal_id=${context.params.id}`)
       pageDetail.data = res.data
     } catch (error) {
       console.log('error')
@@ -85,24 +90,40 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  $primary: #F2BE58;
   .container{
-      padding-top: 120px;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      .info{
-          margin-bottom: 80px;
-      }
-      h2{
-          margin-top: 90px;
-          margin-bottom: 50px;
-          text-align: center;
-      }
-      p{
-          font-size: 24px;
-          margin-bottom: 25px;
-      }
+    padding-top: 120px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .info{
+      margin-bottom: 80px;
+    }
+    h2{
+      margin-top: 90px;
+      margin-bottom: 50px;
+      text-align: center;
+    }
+    p{
+      font-size: 24px;
+      margin-bottom: 25px;
+    }
+    .button-group{
+      margin-bottom: 80px;
+    }
+    .button{
+      font-size: 24px;
+      color: #000000;
+      text-align: center;
+      width: 150px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      cursor: pointer;
+      background-color: $primary;
+      border: 1px solid $primary;
+      border-radius: 4px;
+    }
   }
 </style>

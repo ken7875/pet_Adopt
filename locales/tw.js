@@ -15,11 +15,21 @@ export default {
   cat: '貓',
   dog: '狗',
   search: '搜尋',
+  apply: '申請領養',
   detail: '查看細節',
   more: '查看更多',
   phone: '電話',
   address: '地址',
   source: '資料來源',
   shelterPlace: '收容所地點',
-  contact: '聯絡方式'
+  contact: '聯絡方式',
+  // 表單
+  require: '此為必填欄位',
+  name: '姓名',
+  id: '身分證',
+  email: '電子郵件',
+  correctPhone: '電話輸入正確',
+  correctEmail: '電子郵件輸入正確',
+  correctId: '身分證輸入正確',
+  correctName: '姓名輸入正確'
 }
