@@ -161,7 +161,7 @@ export default {
       try {
         this.$nuxt.$loading.start()
         const top = this.top += 18
-        const url = `http://localhost:3000/apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&$top=${top}&$skip=0&animal_kind=${this.tranKind}&animal_sex=${this.tranSex}&shelter_name=${this.$refs.shelter.value}`
+        const url = `https://nuxt-pet-adopt.herokuapp.com/apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&$top=${top}&$skip=0&animal_kind=${this.tranKind}&animal_sex=${this.tranSex}&shelter_name=${this.$refs.shelter.value}`
         const res = await axios.get(url)
         this.displayData = res.data
         this.$nuxt.$loading.finish()
@@ -225,7 +225,7 @@ export default {
           filterString += `&shelter_name=${this.$refs.shelter.value}`
         }
         this.$nuxt.$loading.start()
-        const url = `http://localhost:3000/apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&$top=${top}&$skip=0${filterString}`
+        const url = `https://nuxt-pet-adopt.herokuapp.com/apiService/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&$top=${top}&$skip=0${filterString}`
         const result = await axios.get(url)
         this.displayData = result.data
         this.$nuxt.$loading.finish()
