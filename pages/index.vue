@@ -2,7 +2,7 @@
   <div>
     <div class="position-relative">
       <div class="banner">
-        <img src="~@/assets/img/dog.jpg" alt="">
+        <img src="~@/assets/img/banner.jpg" alt="">
       </div>
       <div class="search">
         <div class="input-group">
